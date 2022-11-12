@@ -73,5 +73,28 @@ namespace EmployeeWageProblem
             Empwage = empHrs * WAGE_PER_HR;
             Console.WriteLine("Employee salary is :" + Empwage);
         }
+
+        public void SwitchCase()
+        {
+            int empHrs = 0;
+            int totalEmpWage = 0;
+
+            Random random = new Random();
+            int empCheck = random.Next(0, 3);
+            switch (empCheck)
+            {
+                case 1:
+                    empHrs = IS_FULL_TIME;
+                    Console.WriteLine("Employee is Present");
+                    break;
+
+                case 2:
+                    empHrs = IS_PART_TIME;
+                    Console.WriteLine("Employee is Absent");
+                    break;
+            }
+            totalEmpWage = WAGE_PER_HR * empHrs;
+            Console.WriteLine("Total Employee salary is: " + totalEmpWage);
+        }
     }
 }
