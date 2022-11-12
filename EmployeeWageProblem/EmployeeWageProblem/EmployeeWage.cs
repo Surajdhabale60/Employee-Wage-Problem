@@ -119,5 +119,29 @@ namespace EmployeeWageProblem
             totalEmpWage = WAGE_PER_HR * empHrs;
             Console.WriteLine("Monthly salary is: " + totalEmpWage);
         }
+
+        public void WorkingHrs()
+        {
+            int empHrs = 0;
+            int salary = 0;
+
+            Random random = new Random();
+            for (int i = 0; i < WORKING_DAYS && empHrs < 100; i++)
+            {
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
+                {
+                    case IS_FULL_TIME:
+                        empHrs += FULL_TIME_HR;
+                        break;
+
+                    case IS_PART_TIME:
+                        empHrs += PART_TIME_HR;
+                        break;
+                }
+            }
+            salary = WAGE_PER_HR * empHrs;
+            Console.WriteLine("Total Employee salary is: " + salary);
+        }
     }
 }
