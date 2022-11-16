@@ -172,5 +172,36 @@ namespace EmployeeWageProblem
 
             }
         }
+        public int Multiple()
+        {
+            int empWorkingDays = 0;
+            int salary = 0;
+            int empHrs = 0;
+            Random random = new Random();
+            int empCheck = random.Next(0, 3);
+            while (empWorkingDays < WORKING_DAYS && empHrs < HOUR_IN_MONTH)
+            {
+                empWorkingDays = empWorkingDays + 1;
+                switch (empCheck)
+                {
+                    case IS_FULL_TIME:
+                        empHrs += IS_FULL_TIME;
+                        break;
+                    case IS_PART_TIME:
+                        empHrs += IS_PART_TIME;
+                        break;
+
+                    default:
+                        empHrs += 0;
+                        break;
+                }
+            }
+            Console.WriteLine("Working Hours : " + empHrs + ", Working Days : " + empWorkingDays);
+            salary = empHrs * WAGE_PER_HR;
+
+            Console.WriteLine("Total Employee Salary of " + WORKING_DAYS + " Day is : " + salary + "\n");
+            return salary;
+        }
+
     }
 }
