@@ -27,6 +27,9 @@
 
             EmployeeWage employeeWage7 = new EmployeeWage();
             employeeWage7.Multiple();
+
+            EmployeeWage employeeWage8 = new EmployeeWage();
+            employeeWage8.ClassMethod();
         }
     }
 }

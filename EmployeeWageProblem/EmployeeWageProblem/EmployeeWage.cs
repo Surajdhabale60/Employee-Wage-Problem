@@ -9,7 +9,7 @@ namespace EmployeeWageProblem
     internal class EmployeeWage
     {
         const int IS_FULL_TIME = 0, IS_PART_TIME = 1, WAGE_PER_HR = 20, FULL_TIME_HR = 8, PART_TIME_HR = 8, PART_TIME = 1, HOUR_IN_MONTH = 100, WORKING_DAYS = 20;
-        int empHrs = 0, EmpHrs = 0, totalWorkingDays = 0;
+        int empHrs = 0, EmpHrs = 0, totalWorkingDays = 0, salary = 0;
         public void Attendence()
         {
             Random random = new Random();
@@ -26,9 +26,6 @@ namespace EmployeeWageProblem
 
         public void DailyWage()
         {
-            int empHrs = 0;
-            int Empwage = 0;
-
             Random random = new Random();
             int empcheck = random.Next(0, 2);
 
@@ -43,15 +40,12 @@ namespace EmployeeWageProblem
                 empHrs = 0;
             }
 
-            Empwage = empHrs * WAGE_PER_HR;
-            Console.WriteLine("Employee salary is :" + Empwage);
+            salary = empHrs * WAGE_PER_HR;
+            Console.WriteLine("Employee salary is :" + salary);
         }
 
         public void PartTime()
         {
-            int empHrs = 0;
-            int Empwage = 0;
-
             Random random = new Random();
             int empcheck = random.Next(0, 3);
             if (empcheck == IS_FULL_TIME)
@@ -71,8 +65,8 @@ namespace EmployeeWageProblem
                 empHrs = 0;
             }
 
-            Empwage = empHrs * WAGE_PER_HR;
-            Console.WriteLine("Employee salary is :" + Empwage);
+            salary = empHrs * WAGE_PER_HR;
+            Console.WriteLine("Employee salary is :" + salary);
         }
 
         public void SwitchCase()
@@ -100,9 +94,6 @@ namespace EmployeeWageProblem
 
         public void MonthlyWage()
         {
-            int empHrs = 0;
-            int totalEmpWage = 0;
-
             Random random = new Random();
             for (int i = 0; i < WORKING_DAYS; i++)
             {
@@ -117,15 +108,12 @@ namespace EmployeeWageProblem
                         break;
                 }
             }
-            totalEmpWage = WAGE_PER_HR * empHrs;
-            Console.WriteLine("Monthly salary is: " + totalEmpWage);
+            salary = WAGE_PER_HR * empHrs;
+            Console.WriteLine("Monthly salary is: " + salary);
         }
 
         public void WorkingHrs()
         {
-            int empHrs = 0;
-            int salary = 0;
-
             Random random = new Random();
             for (int i = 0; i < WORKING_DAYS && empHrs < 100; i++)
             {
@@ -174,14 +162,12 @@ namespace EmployeeWageProblem
         }
         public int Multiple()
         {
-            int empWorkingDays = 0;
-            int salary = 0;
-            int empHrs = 0;
+            
             Random random = new Random();
             int empCheck = random.Next(0, 3);
-            while (empWorkingDays < WORKING_DAYS && empHrs < HOUR_IN_MONTH)
+            while (totalWorkingDays < WORKING_DAYS && empHrs < HOUR_IN_MONTH)
             {
-                empWorkingDays = empWorkingDays + 1;
+                totalWorkingDays = totalWorkingDays + 1;
                 switch (empCheck)
                 {
                     case IS_FULL_TIME:
@@ -196,12 +182,37 @@ namespace EmployeeWageProblem
                         break;
                 }
             }
-            Console.WriteLine("Working Hours : " + empHrs + ", Working Days : " + empWorkingDays);
+            Console.WriteLine("Working Hours : " + empHrs + ", Working Days : " + WORKING_DAYS);
             salary = empHrs * WAGE_PER_HR;
 
             Console.WriteLine("Total Employee Salary of " + WORKING_DAYS + " Day is : " + salary + "\n");
             return salary;
         }
+        public void ClassMethod()
+        {
+            while (EmpHrs <= HOUR_IN_MONTH && totalWorkingDays < WORKING_DAYS)
+            {
+                
+                Random random = new Random();
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
+                {
+                    case IS_FULL_TIME:
+                        empHrs = 8;
+                        break;
 
+                    case IS_PART_TIME:
+                        empHrs = 4;
+                        break;
+
+                    default:
+                        empHrs += 0;
+                        break;
+                }
+            }
+            EmpHrs = empHrs;
+            salary = EmpHrs * WAGE_PER_HR;
+            Console.WriteLine("Day: " + WORKING_DAYS + "Emp Hr: " + EmpHrs);
+        }
     }
 }
