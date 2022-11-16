@@ -8,7 +8,8 @@ namespace EmployeeWageProblem
 {
     internal class EmployeeWage
     {
-        const int IS_FULL_TIME = 0, IS_PART_TIME = 1, WAGE_PER_HR = 20, FULL_TIME_HR = 8, PART_TIME_HR = 8, PART_TIME = 1, WORKING_DAYS = 20;
+        const int IS_FULL_TIME = 0, IS_PART_TIME = 1, WAGE_PER_HR = 20, FULL_TIME_HR = 8, PART_TIME_HR = 8, PART_TIME = 1, HOUR_IN_MONTH = 100, WORKING_DAYS = 20;
+        int empHrs = 0, EmpHrs = 0, totalWorkingDays = 0;
         public void Attendence()
         {
             Random random = new Random();
@@ -142,6 +143,34 @@ namespace EmployeeWageProblem
             }
             salary = WAGE_PER_HR * empHrs;
             Console.WriteLine("Total Employee salary is: " + salary);
+        }
+        public void ComputeEmpWage()
+        {
+            while (EmpHrs <= HOUR_IN_MONTH && totalWorkingDays < WORKING_DAYS)
+            {
+                totalWorkingDays++;
+                empHrs++;
+                Random random = new Random();
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
+                {
+                    case IS_PART_TIME:
+                        empHrs = 4;
+                        break;
+                    case IS_FULL_TIME:
+                        empHrs = 8;
+                        break;
+                    default:
+                        empHrs = 0;
+                        break;
+                }
+                EmpHrs += empHrs;
+                Console.WriteLine("Day : " + totalWorkingDays + "\nEmployee Working Hours: " + empHrs);
+
+                int empWage = EmpHrs * WAGE_PER_HR;
+                Console.WriteLine("Total Employee Wage: " + empWage);
+
+            }
         }
     }
 }
